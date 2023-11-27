@@ -2,9 +2,9 @@ package com.example.jogador;
 
 import com.example.banco.Banco;
 
-import com.example.bancoimobiliario.Sections.IObservable;
-import com.example.bancoimobiliario.Policia.IObserver;
-import com.example.bancoimobiliario.Sections.Sections;
+import com.example.sections.IObservable;
+import com.example.policia.IObserver;
+import com.example.sections.Sections;
 
 import java.util.ArrayList;
 
@@ -22,13 +22,11 @@ public class JogadorUm implements IObservable, Ijogador {
 
     int qtdDuplas;
 
-
     public JogadorUm() {
         this.qtdDuplas = 0;
         minhasCasas = new ArrayList<>();
         casaAtual = new Sections("inicio",200.000);
     }
-
 
     public Sections getCasaAtual() {
         return casaAtual;
@@ -37,7 +35,7 @@ public class JogadorUm implements IObservable, Ijogador {
     public void setCasaAtual(Sections casaAtual) {
         this.casaAtual = casaAtual;
         if(this.casaAtual.getNome().equals("entre no camburao")){
-            setInPrison(true);
+            setPrisao(true);
             notifyObserver();
         }
     }
@@ -72,7 +70,6 @@ public class JogadorUm implements IObservable, Ijogador {
         this.posicao = position;
     }
 
-
     public int getQtdDuplas() {
         return qtdDuplas;
     }
@@ -91,8 +88,6 @@ public class JogadorUm implements IObservable, Ijogador {
             this.estaPreso = true;
             return -1;
         }
-
-
         
         return (dado1 + dado2);
     }
@@ -126,15 +121,13 @@ public class JogadorUm implements IObservable, Ijogador {
         iObserver.update(this);
     }
 
-
     @Override
     public void comprar(Sections Casa) {
-        if(Casa.getValor() <= account.getSaldo()){
+        if(Casa.getValor() <= conta.getSaldo()) {
             minhasCasas.add(Casa);
             setBalance((float) (getBalance()-Casa.getValor()));
         }
     }
-
 
     @Override
     public void pagarTaxa(float taxa) {
@@ -142,20 +135,17 @@ public class JogadorUm implements IObservable, Ijogador {
         
     }
 
-
     @Override
     public void receberTaxa(float taxa) {
         setBalance((float) (getBalance()+taxa));
 
     }
 
-
     @Override
     public void adicionarCasas() {
         /* minhasCasas.add(); */
         
     }
-
 
     @Override
     public int getQuantidadeCasas() {
@@ -166,9 +156,7 @@ public class JogadorUm implements IObservable, Ijogador {
     public String toString(){
         return "Jogador: "+ 0;
     }
-    public Banco getConta(){
+    public Banco getConta() {
         return conta;
     }
-
-
 }

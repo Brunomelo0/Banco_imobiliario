@@ -1,6 +1,6 @@
 package com.example.jogador;
 
-//import com.example.bancoimobiliario.Sections.Sections;
+import com.example.sections.Sections;
 
 public interface Ijogador {
     public void comprar(Sections v);

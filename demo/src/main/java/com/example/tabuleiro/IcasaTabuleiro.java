@@ -1,7 +1,8 @@
 package com.example.tabuleiro;
-//import com.example.bancoimobiliario.Player.Player;
+
+import com.example.jogador.JogadorUm;
 
 public interface IcasaTabuleiro {
-    public void adicionarJogadoresNaListaDaCasa(Player player);
-	public void removerJogadoresDaListaDaCasa(Player player);
+    public void adicionarJogadoresNaListaDaCasa(JogadorUm player);
+	public void removerJogadoresDaListaDaCasa(JogadorUm player);
 }

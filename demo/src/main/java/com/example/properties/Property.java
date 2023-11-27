@@ -1,11 +1,11 @@
 package com.example.properties;
 
 import com.example.jogador.JogadorUm;
-import com.example.bancoimobiliario.Sections.Sections;
+import com.example.sections.Sections;
 
 public class Property extends Sections implements IProperty{
 
-    int value;
+    int valor;
     JogadorUm owner;
 
     public Property(String nome) {
@@ -24,7 +24,7 @@ public class Property extends Sections implements IProperty{
 
     @Override
     public void setOwner(JogadorUm owner) {
-
+        this.owner = owner;
     }
 }
 

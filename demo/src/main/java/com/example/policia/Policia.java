@@ -1,20 +1,17 @@
 package com.example.policia;
 
 import com.example.jogador.JogadorUm;
-import com.example.bancoimobiliario.Sections.Prison;
-
-
+import com.example.sections.Prisao;
 
 public class Policia implements IObserver {
-    Prisao prison = new Prisao();
+    Prisao prisao = new Prisao();
 
     @Override
-    public void update(Player player) {
+    public void update(JogadorUm player) {
         prisao.ativaEfeito(player);
         
     }
     public void presos(){
         prisao.presos();
     }
-    
 }

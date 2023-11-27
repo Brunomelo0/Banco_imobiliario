@@ -2,9 +2,8 @@ package com.example.cartas;
 
 //import android.widget.Toast;
 
-//import com.example.bancoimobiliario.Player.Player;
-//import com.example.bancoimobiliario.Sections.ISectionEffect;
-
+import com.example.jogador.JogadorUm;
+import com.example.sections.ISectionEffect;
 import java.util.ArrayList;
 
 public class CartaDaSorte implements ISectionEffect {
@@ -15,16 +14,16 @@ public class CartaDaSorte implements ISectionEffect {
     }
     public void inicializaCartas(){
         cartas.add("Sorte: Uma herança inesperada. Jogador recebe: R$ 75.000");
-        cartas.add("Sorte: Sua casa será desapropriada para a contrução de um metrô: Jogador recebe idenização de R$ 60.000");
-        cartas.add("Sorte: Silvio santos te deu R$ 10.000");
-        cartas.add("Azar: Voce perdeu R$ 25.000");
+        cartas.add("Sorte: Sua casa será desapropriada para a contrução de um metrô: Jogador recebe idenização de R$ 100.000");
+        cartas.add("Sorte: Você ganhou R$ 10.000");
+        cartas.add("Azar: Voce perdeu R$ 15.000");
         cartas.add("Azar: voce foi roubado em R$ 45.000");
         cartas.add("Azar: Perdeu tudo");
     }
 
     @Override
 
-    public void ativaEfeito(Player player)
+    public void ativaEfeito(JogadorUm player)
     {
         int cardPosition = (int)((Math.random() * (6 - 1)) + 1);
         System.out.println("Carta da sorte: "+ cartas.get(cardPosition));

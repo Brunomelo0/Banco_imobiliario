@@ -1,25 +1,25 @@
 package com.example.tabuleiro;
 
-//import com.example.bancoimobiliario.Player.Player;
-//import com.example.bancoimobiliario.Policia.IObserver;
-//import com.example.bancoimobiliario.Policia.Police;
-//import com.example.bancoimobiliario.Sections.Sections;
+import com.example.jogador.JogadorUm;
+import com.example.policia.IObserver;
+import com.example.policia.Policia;
+import com.example.sections.Sections;
 
 import java.util.ArrayList;
 
 public final class JogoTabuleiro {
 
-    private static BoardGame instance;
-    ArrayList<Sections> sections = com.example.bancoimobiliario.utils.initializeSections.initializeSections();
-    ArrayList<Player> players = new ArrayList<>();
+    private static JogoTabuleiro instance;
+    ArrayList<Sections> sections = com.example.utils.initializeSections.initializeSections();
+    ArrayList<JogadorUm> players = new ArrayList<>();
     //int valorDado;
-    IObserver iObserver = new Police();
+    IObserver iObserver = new Policia();
 
 
 
     private JogoTabuleiro(){
         System.out.println("O jogo acaba de iniciar, você está na casa: " + sections.get(0));
-        players.add(new Player());
+        players.add(new JogadorUm());
         players.get(0).addObserver(iObserver);
         players.get(0).setCasaAtual(new Sections("inicio",200.000));
     }
@@ -41,10 +41,10 @@ public final class JogoTabuleiro {
     }
 
     public int getPosicaoAtualJogador() {
-        return players.get(0).getPosition();
+        return players.get(0).getPosicao();
     }
 
-    public Player getJogadorAtual(){
+    public JogadorUm getJogadorAtual(){
         return players.get(0);
     }
 
@@ -62,26 +62,22 @@ public final class JogoTabuleiro {
 
             //sets player in new section
             //verify player is in prison
-            if(!players.get(0).isInPrison()) {
+            if(!players.get(0).estaPreso()) {
 
-                players.get(0).setCasaAtual(sections.get(players.get(0).getPosition()).getSections());
-                sections.get(players.get(0).getPosition()).ativaEfeito(players.get(0));
+                players.get(0).setCasaAtual(sections.get(players.get(0).getPosicao()).getSections());
+                sections.get(players.get(0).getPosicao()).ativaEfeito(players.get(0));
 
 
                 System.out.println("Você tirou: " + diceResult + " no dado");
-                System.out.println("sus" + sections.get(players.get(0).getPosition()).getNome());
-                return sections.get(players.get(0).getPosition()).getNome();
-
-
-
-            }else{
+                System.out.println("sus" + sections.get(players.get(0).getPosicao()).getNome());
+                return sections.get(players.get(0).getPosicao()).getNome();
+            } else {
 
                 System.out.println("Jogador preso");
             }
-            
         }
 
-        return "vazio";
+        return "Vázio";
     }
 }
 

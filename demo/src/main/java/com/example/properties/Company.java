@@ -1,10 +1,9 @@
 package com.example.properties;
 
 import com.example.jogador.JogadorUm;
-import com.example.bancoimobiliario.Sections.Sections;
+import com.example.sections.Sections;
 
 public class Company extends Sections implements IProperty {
-
 
     int valor;
     JogadorUm owner;
